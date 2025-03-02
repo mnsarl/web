@@ -55,10 +55,13 @@
             transform: scale(1.05);
         }
 
+        /* تعديل لعرض القرص بشكل جيد على الهواتف */
         .progress-container {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 50vw; /* عرض النسبة المئوية من عرض الشاشة */
+            height: 50vw; /* ارتفاع النسبة المئوية من عرض الشاشة */
+            max-width: 150px; /* تعيين الحد الأقصى للعرض */
+            max-height: 150px; /* تعيين الحد الأقصى للارتفاع */
             margin: 20px auto;
         }
 
