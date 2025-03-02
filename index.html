@@ -85,36 +85,36 @@
 </head>
 <body>
     <div class="container">
-        <h2 id="title">MEXC kpi Calculator</h2>
+        <h2 id="title">MEXC Points Calculator</h2>
 
         <label>Official Request Promotion:</label>
-        <input type="number" id="officialPromotion" value="0" min="0" oninput="calculatekpi()">
+        <input type="number" id="officialPromotion" value="0" min="0" oninput="calculatePoints()">
 
         <label>Own post with hot hashtag:</label>
-        <input type="number" id="hotHashtagPost" value="0" min="0" oninput="calculatekpi()">
+        <input type="number" id="hotHashtagPost" value="0" min="0" oninput="calculatePoints()">
 
         <label>Comment under hot post:</label>
-        <input type="number" id="hotPostComment" value="0" min="0" oninput="calculatekpis()">
+        <input type="number" id="hotPostComment" value="0" min="0" oninput="calculatePoints()">
 
         <label>MSG without reply:</label>
-        <input type="number" id="msgNoReply" value="0" min="0" oninput="calculatekpi()">
+        <input type="number" id="msgNoReply" value="0" min="0" oninput="calculatePoints()">
 
         <label>MSG with reply:</label>
-        <input type="number" id="msgWithReply" value="0" min="0" oninput="calculatekpi()">
+        <input type="number" id="msgWithReply" value="0" min="0" oninput="calculatePoints()">
 
         <label>New Registered user (trade):</label>
-        <input type="number" id="newRegisteredUser" value="0" min="0" oninput="calculatekpi()">
+        <input type="number" id="newRegisteredUser" value="0" min="0" oninput="calculatePoints()">
 
         <div class="progress-container">
             <div class="progress-circle" id="progressCircle"></div>
             <div class="progress-text" id="progressText">0</div>
         </div>
 
-        <h2>Total kpi: <span id="totalkpi">0</span></h2>
+        <h2>Total Points: <span id="totalPoints">0</span></h2>
     </div>
 
     <script>
-        function calculatekpi() {
+        function calculatePoints() {
             let officialPromotion = parseInt(document.getElementById("officialPromotion").value) || 0;
             let hotHashtagPost = parseInt(document.getElementById("hotHashtagPost").value) || 0;
             let hotPostComment = parseInt(document.getElementById("hotPostComment").value) || 0;
@@ -122,24 +122,24 @@
             let msgWithReply = parseInt(document.getElementById("msgWithReply").value) || 0;
             let newRegisteredUser = parseInt(document.getElementById("newRegisteredUser").value) || 0;
 
-            let totalkpi = (officialPromotion * 30) + 
+            let totalPoints = (officialPromotion * 30) + 
                               (hotHashtagPost * 2) + 
                               (hotPostComment * 1) + 
                               (msgNoReply * 1) + 
                               (msgWithReply * 3) + 
                               (newRegisteredUser * 50);
 
-            document.getElementById("totalkpi").innerText = totalkpi;
-            animateProgress(totalkpi);
+            document.getElementById("totalPoints").innerText = totalPoints;
+            animateProgress(totalPoints);
         }
 
         function animateProgress(points) {
-            let maxkpi= 2100;
-            let percentage = Math.min(kpi / maxkpi * 360, 360);
+            let maxPoints = 2100;
+            let percentage = Math.min(points / maxPoints * 360, 360);
             let progressCircle = document.getElementById("progressCircle");
             progressCircle.style.background = `conic-gradient(${points > 1500 ? 'gold' : '#4caf50'} ${percentage}deg, #333 ${percentage}deg)`;
             progressCircle.style.transform = `rotate(${percentage / 10}deg)`;
-            document.getElementById("progressText").innerText = kpi;
+            document.getElementById("progressText").innerText = points;
         }
     </script>
 </body>
